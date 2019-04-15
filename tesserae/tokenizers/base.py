@@ -74,6 +74,16 @@ class BaseTokenizer(object):
         #normalized = re.sub(r'[\n\r\r\n]', ' / ', normalized, flags=re.UNICODE)
         return normalized
 
+    def sound_trigrams(word):
+        trigrams = []
+        begin_slice = 0
+        end_slice = 3
+        while end_slice <= len(word):
+            trigrams.append(word[begin_slice:end_slice])
+            begin_slice += 1
+            end_slice += 1
+        return(trigrams)
+
     def tokenize(self, raw, record=True, text=None):
         """Normalize and featurize the words in a string.
 
